@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="build/react.js"></script>
+    <script src="build/JSXTransformer.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/jsx">
+      React.render(
+        <h1>Hello, world!</h1>,
+        document.getElementById('example')
+      );
+    </script>
+	<!DOCTYPE html>
+    <div id="example1"></div>
+    <script type="text/jsx">
+
+      // ** Your code goes here! **
+	var HelloWorld = React.createClass({
+	  render: function() {
+	    return (
+	      <p>
+	        Hello, <input type="text" placeholder="Your name here" />!
+	        It is {this.props.date.toTimeString()}
+	      </p>
+	    );
+	  }
+	});
+	
+	setInterval(function() {
+	  React.render(
+	    <HelloWorld date={new Date()} />,
+	    document.getElementById('example1')
+	  );
+	}, 500);
+
+
+    </script>
+    <div id="example2"></div>
+    <script type="text/jsx">
+	var LikeButton = React.createClass({
+	  getInitialState: function() {
+	    return {liked: false};
+	  },
+	  handleClick: function(event) {
+	    this.setState({liked: !this.state.liked});
+	  },
+	  render: function() {
+	    var text = this.state.liked ? 'like' : 'haven\'t liked';
+	    return (
+	      <p>
+	        <h1 onClick={this.handleClick}>You</h1> {text} this. Click to toggle.
+	      </p>
+	    );
+	  }
+	});
+	
+	React.render(
+	  <LikeButton />,
+	  document.getElementById('example2')
+	);
+    </script>
+  </body>
